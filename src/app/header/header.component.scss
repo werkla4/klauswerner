@@ -1,0 +1,37 @@
+header{
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    font-size: 30;
+}
+
+.logo{
+    height: 40px;
+    width: 100px;    
+}
+
+.navbar-collapse{
+    flex-grow: unset !important;
+}
+
+button{
+    margin-right: 30px;
+}
+
+.navbar-nav{
+    li{
+        font-size: 25px;        
+        width: 150px;
+        margin-left: auto;
+        text-align: right;
+    }
+    &:last-child{
+        margin-right: 30px;
+    }
+}
+
+.navbar-collapse.in {
+    display: block !important;
+}
