@@ -9,5 +9,9 @@ import { Router } from '@angular/router';
 export class AppComponent {
 
   constructor(public router: Router){}
-  
+  title = "klauswerner";
+
+  scrollToId(id: string){
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  }
 }

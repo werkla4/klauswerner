@@ -1,12 +1,12 @@
-.slideshow-container{
+.slideshow-container {
     height: 100vh;
-    width: 100vw;
-    max-width: 100%;
+    min-width: 100%;
     overflow: hidden;
-    background-color: rgba(0,0,0,0.85);
+    background-color: rgba(0, 0, 0, 0.85);
+    position: relative;
 }
 
-.img-slideshow{
+.img-slideshow {
     height: 100vh;
     width: 100vw;
     max-width: 100%;
@@ -14,45 +14,98 @@
     animation: zoomIn 8s ease;
 }
 
-.slideshow-overlay{
+.slideshow-overlay {
     position: absolute;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     top: 0;
     left: 0;
     right: 0;
     display: flex;
     align-items: center;
 
-    p{
+    p {
         color: white;
         font-size: 80px;
-        border-left: solid #d85050;
+        border-left: solid var(--primary-red);;
         padding-left: 20px;
         margin-left: 120px;
         max-width: 700px;
+
+        @media (max-width: 800px) {
+            margin-left: 60px;
+            font-size: 70px;
+        }
+
+        @media (max-width: 600px) {
+            margin-left: 50px;
+            font-size: 50px;
+        }
+
+        @media (max-width: 400px) {
+            margin-left: 30px;
+            font-size: 40px;
+        }
     }
 }
 
-.fadeIn{
+.fadeIn {
     animation: fadeInAnimation 1.2s ease-in-out;
 }
 
-@keyframes zoomIn{
-    from{
+@keyframes zoomIn {
+    from {
         transform: scale(1);
     }
-    to{
+    to {
         transform: scale(1.2);
     }
 }
 
-@keyframes fadeInAnimation{
-    from{
+@keyframes fadeInAnimation {
+    from {
         opacity: 0;
         transform: translateY(20px);
     }
-    to{
+    to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+.arrows-container{
+    position: relative;
+}
+
+.arrow{
+    z-index: 9999;
+    position: absolute;
+    bottom: 32px;
+    width: 10px;
+    height: 10px;
+    border-right: 3px solid white;
+    border-bottom: 3px solid white;
+    transform: rotate(45deg);
+    animation: pulse 999ms ease infinite alternate;
+
+    &:nth-child(2){
+        bottom: 26px;
+        animation: pulse 999ms ease infinite alternate 333ms;
+    }
+
+    &:nth-child(3){
+        bottom: 20px;
+        animation: pulse 999ms ease infinite alternate 666ms;
+    }
+}
+
+@keyframes pulse {
+    0%{
+        opacity: 0;
+    }
+    30%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0.7;
     }
 }

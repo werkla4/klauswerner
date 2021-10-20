@@ -1,0 +1,302 @@
+.container {
+  scroll-margin-top: 30px;
+  height: 500px;
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+
+  @media (max-width: 1050px) {
+    transform: scale(90%);
+    margin-top: 36px;
+    margin-bottom: -10px;
+  }
+  @media (max-width: 900px) {
+    transform: scale(80%);
+    margin-top: 18px;
+    margin-bottom: -20px;
+  }
+  @media (max-width: 800px) {
+    transform: scale(70%);
+    margin-top: 0px;
+    margin-bottom: -30px;
+  }
+  @media (max-width: 720px) {
+    margin-top: 80px;
+    margin-bottom: 50px;
+    height: unset;
+    width: 450px;
+    transform: unset;
+  }
+  @media (max-width: 500px) {
+    margin-top: 80px;
+    margin-bottom: 50px;
+    height: unset;
+    width: 350px;
+    transform: unset;
+  }
+}
+.profile-container {
+  height: 400px;
+  position: relative;
+  box-shadow: 0px 0px 9px #606060;
+}
+.person-details {
+  display: flex;
+}
+.image-container {
+  height: 400px;
+  width: 400px;
+  position: relative;
+}
+.text-container {
+  height: 400px;
+  width: 550px;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.image {
+  position: absolute;
+  background-image: url("../../assets/img/Portrait2.jpeg");
+  background-size: cover;
+  background-position: center;
+  height: 350px;
+  width: 350px;
+  border-radius: 100%;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.fill-area {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-red);
+  clip-path: polygon(0 0, 40% 0, 100% 100%, 0% 100%);
+  z-index: 0;
+}
+.links {
+  color: brown;
+}
+.name {
+  color: whitesmoke;
+  font-size: 60px;
+}
+.job {
+  margin-top: -15px;
+  color: var(--primary-red);
+  font-size: 35px;
+  font-style: italic;
+}
+.info-text {
+  margin-top: 40px;
+  color: whitesmoke;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+@media (max-width: 720px) {
+  .profile-container{
+    height: unset;
+    width: 450px;
+  }
+  .person-details{
+    flex-direction: column;
+    box-shadow: 0px 0px 9px #606060;
+  }
+  .image-container{
+    height: 350px;
+    width: 450px;
+  }
+  .text-container{
+    padding: 20px;
+    height: 350px;
+    width: 450px;
+  }
+  .image{
+    height: 300px;
+    width: 300px;
+  }
+  .name{
+    font-size: 45px;
+  }
+  .job{
+    font-size: 25px;
+  }
+  .info-text{
+    font-size: 22px;
+  }
+  .btn-contact-me{
+    width: 400px !important;
+  }
+  .text-container{
+    height: 300px;
+  }
+}
+@media (max-width: 500px) {
+  .profile-container{
+    height: unset;
+    width: 350px;
+  }
+  .image-container{
+    height: 250px;
+    width: 350px;
+  }
+  .text-container{
+    padding: 20px;
+    height: 350px;
+    width: 350px;
+  }
+  .image{
+    height: 200px;
+    width: 200px;
+  }
+  .name{
+    font-size: 45px;
+  }
+  .job{
+    font-size: 25px;
+  }
+  .info-text{
+    font-size: 17px;
+  }
+  .btn-contact-me{
+    width: 310px !important;
+  }
+  .text-container{
+    height: 260px;
+  }
+}
+
+@media (max-width: 500px) {
+  .container{
+    transform: scale(90%);
+  }  
+}
+
+@media (max-width: 400px) {
+  .container{
+    transform: scale(80%);
+    margin-top: 20px;
+    margin-bottom: 0px;
+    margin-left: -10px;
+  }  
+}
+
+@media (max-width: 350px) {
+  .container{
+    margin-left: -20px;
+  }  
+}
+
+// ##########################################
+.btn-contact-me {
+  position: relative;
+  display: block;
+  border-radius: 4px;
+  color: var(--primary-red);
+  overflow: hidden;
+  font-family: "Roboto", sans-serif;
+  border: 2px solid var(--primary-red);
+  transition: all 0.1s linear;
+  width: 100%;
+  height: 50px;
+  cursor: pointer;
+  margin-top: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p {
+    margin-bottom: 0;
+  }
+
+  &:hover {
+    border: 2px solid transparent;
+    span {
+      position: absolute;
+      display: block;
+
+      &:nth-child(1) {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--primary-red));
+        animation: animate1 1.6s linear infinite;
+      }
+      @keyframes animate1 {
+        0% {
+          left: -100%;
+        }
+        50%,
+        100% {
+          left: 100%;
+        }
+      }
+
+      &:nth-child(2) {
+        top: -100%;
+        right: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(180deg, transparent, var(--primary-red));
+        animation: animate2 1.6s linear infinite;
+        animation-delay: 0.4s;
+      }
+
+      @keyframes animate2 {
+        0% {
+          top: -100%;
+        }
+        50%,
+        100% {
+          top: 100%;
+        }
+      }
+      &:nth-child(3) {
+        bottom: 0;
+        right: 0;
+        width: 100%;
+
+        background: linear-gradient(270deg, transparent, var(--primary-red));
+        animation: animate3 1.6s linear infinite;
+        animation-delay: 0.8s;
+      }
+      @keyframes animate3 {
+        0% {
+          right: -100%;
+          height: 2px;
+        }
+        50%,
+        100% {
+          height: 2px;
+          right: 100%;
+        }
+      }
+
+      &:nth-child(4) {
+        bottom: -100%;
+        left: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(360deg, transparent, var(--primary-red));
+        animation: animate4 1.6s linear infinite;
+        animation-delay: 1.2s;
+      }
+      @keyframes animate4 {
+        0% {
+          bottom: -100%;
+        }
+        50%,
+        100% {
+          bottom: 100%;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,69 @@
+<div class="container" id="references">
+    <div style="display: flex; flex-direction: column;">
+        <div class="title-container">
+            <h2>References</h2>
+            <a class="git-container" href="https://github.com/werkla4?tab=repositories">
+                <img src="../../assets/img/git-red.png" class="git-logo">
+                <p>GITHUB PROFIL</p>
+            </a>
+        </div>
+        <!-- btn sides -->
+        <div class="btn-play-side-container">
+            <div *ngIf="play" class="btn-side btn-side-selected">
+                <img *ngIf="play" src="../../assets/img/play-button.png" class="play-btn" (click)="btnClickPlay()">
+            </div>
+            <div *ngIf="play == false" class="btn-side">
+                <img *ngIf="play == false" src="../../assets/img/pause-button.png" class="play-btn"
+                    (click)="btnClickPlay()">
+            </div>
+            <div id="btn-side1" class="btn-side show-side-nr btn-side-selected" (click)="showSide(1)">1</div>
+            <div id="btn-side2" class="btn-side show-side-nr" (click)="showSide(2)">2</div>
+        </div>
+        <!-- mobile timeline -->
+        <div class="mobile-timeline-container">
+            <div *ngFor="let reference of references; let i = index" class="mt-element" id="mt{{i}}"
+                (click)="updateCarousel(i)">
+                <app-timeline-small-box-mobile [title]="reference.title" [codeStyle]="reference.codeStyle"
+                    (click)="currentIndex = i">
+                </app-timeline-small-box-mobile>
+            </div>
+        </div>
+        <!-- large timeline -->
+        <div class="reference-container">
+            <div class="main-container">
+                <div class="flex-left">
+                    <div id="side1" class="side1">
+                        <app-timeline-small-box *ngFor="let reference of references.slice(0, 3); let i = index"
+                            [title]="reference.title" [codeStyle]="reference.codeStyle" (click)="clickOnReference( i )"
+                            id="left-side1-{{i}}">
+                        </app-timeline-small-box>
+                    </div>
+                    <div id="side2" class="side2">
+                        <app-timeline-small-box *ngFor="let reference of references.slice(3, 6); let i = index"
+                            [title]="reference.title" [codeStyle]="reference.codeStyle"
+                            (click)="clickOnReference(i + 3)" id="left-side2-{{i}}">
+                        </app-timeline-small-box>
+                    </div>
+                </div>
+                <div class="flex-middle" (mouseenter)="hideHoverInfo()">
+                    <div class="hover-info" id="hover-info">| Hover for more details |</div>
+                    <div class="img-overlay">
+                        <img src="{{references[currentIndex].imgPath}}" class="middle-image">
+                        <h2 class="middle-title">{{ references[currentIndex].title }}</h2>
+                        <p class="middle-description">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa
+                            tenetur quibusdam et ut? Culpa accusantium reprehenderit aliquam nulla ad eius consectetur!
+                            Nemo, maiores dicta saepe libero quidem provident, molestias illo autem non architecto
+                            suscipit voluptatem aliquid voluptates dolore? Ut cumque, sequi sed veritatis tempore veniam
+                            aliquid impedit culpa maiores facilis.</p>
+                    </div>
+                </div>
+                <div class="flex-right">
+                    <app-timeline-small-box *ngFor="let reference of references.slice(3, 7); let i = index"
+                        [title]="reference.title" [codeStyle]="reference.codeStyle" (click)="clickOnReference(i + 3);"
+                        id="right-side-{{i}}">
+                    </app-timeline-small-box>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,25 +1,19 @@
 <header>
-  <nav class="navbar navbar-expand-lg justify-content-between" [class.navbar-light]="darkMode" [class.navbar-dark]="!darkMode">
-    <a class="navbar-brand" routerLink="/">
-      <img *ngIf='darkMode' (click)="darkMode=!darkMode" class="logo" src="assets/img/grey_logo.png">
-      <img *ngIf='!darkMode' (click)="darkMode=!darkMode" class="logo" src="assets/img/white_logo.png">
-    </a>
-    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" [class.active]="activeLink=='/' " routerLink="/" (click)="activeLink='/'">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [class.active]="activeLink=='features'" (click)="activeLink='features'; darkMode=true;">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [class.active]="activeLink=='imprint'" routerLink="/imprint" (click)="activeLink='imprint'">Imprint</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <a routerLink="/">
+    <img *ngIf='darkMode' class="logo" src="assets/img/grey_logo.png">
+    <img *ngIf='!darkMode' class="logo" src="assets/img/white_logo.png">
+  </a>
+  <img src="assets/img/menu-bar.png" class="menu-logo" (click)="clickMenuLogo()">
+  <div class="nav-bar-mobile" [class.show-nav-bar-mobile]="showMobileMenu" id="navbar-items-container">
+    <ul class="nav-ul">
+      <li class="nav-item" *ngFor="let item of items; let i = index;" (click)="itemClick(i)" id="item{{ i }}" [class.nav-item-selected]="i == 0">
+        <a class="nav-link">{{ item.title }}</a>
+      </li>
 
+      <!-- <li class="nav-item">
+        <a class="nav-link" [class.active]="activeLink=='imprint'" routerLink="/imprint" (click)="activeLink='imprint'">Imprint</a>
+      </li> -->
+    </ul>
+  </div>
+  <div style="position: fixed;" [class.nav-bar-unfocus-overlay]="navbarFocused" (click)="navbarUnfocused()"></div>
 </header>

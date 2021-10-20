@@ -14,18 +14,26 @@ export class SlideshowComponent implements OnInit {
   currentImage = 0;
   showImage = true;
 
-  ngOnInit(){
+  ngOnInit() {
     this.updateImage();
   }
 
-  updateImage(){
-    setInterval(()=>{
+  updateImage() {
+    setInterval(() => {
       this.currentImage++;
       this.currentImage = this.currentImage % this.images.length;
       this.showImage = false;
-      setTimeout(()=>{
+      setTimeout(() => {
         this.showImage = true;
       }, 10);
     }, 8000);
+  }
+
+  scroll(id: string) {
+    document.getElementById(id)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest"
+      });
   }
 }

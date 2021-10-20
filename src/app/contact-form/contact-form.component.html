@@ -1,0 +1,102 @@
+<div id="contact-form" class="contact-form">
+    <div class="container">
+        <h2>Contact</h2>
+
+        <div class="top-line">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+
+        <div style="display: flex; flex-direction: row;">
+            <div class="container-img">
+                <img src="../../assets/img/Bewerbung_Body.jpeg" class="body-img">
+            </div>
+            <div id="middle-id" class="middle-container">
+                <!-- hidden submit btn -->
+                <button id="btn-submit-mail" type="submit" style="display: none;"></button>
+                <!-- bg red -->
+                <div class="red-area"></div>
+                <!-- letter -->
+                <div class="letter" id="letter">
+                    <h3 class="text-title" id="letter-title">Quick info:</h3>
+                    <div class="text-area-container">
+                        <textarea name="message" id="input-text" style="height: 100%; width: 100%;"
+                            (click)="clickOnTextarea()"></textarea>
+                        <div class="line-container">
+                            <div *ngFor="let i of [0,1,2,3,4]" class="line"></div>
+                        </div>
+                    </div>
+                    <input type="text" name="name" style="display: none;" value="HOMEPAGE-Bewerbung-Mail">
+                </div>
+                <div class="envelope" id="envelope">
+                    <svg width="869" height="932" viewBox="0 0 869 932" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="outer-svg" id="outer" (click)="envelopeClick()">
+                        <g id="outer-svg" clip-path="url(#clip0)">
+                            <g>
+                                <path d="M1.68118 933.088L437.118 615.856L872.555 933.088H1.68118Z" fill="#C4C4C4"
+                                    stroke="black" stroke-width="3" />
+                                <path d="M873.169 934.638L436.711 620.264L873.169 305.889V934.638Z" fill="#C4C4C4"
+                                    stroke="black" stroke-width="2" />
+                                <path d="M-3.61044 305.889L432.847 620.264L-3.61044 934.638L-3.61044 305.889Z"
+                                    fill="#C4C4C4" stroke="black" stroke-width="2" />
+                            </g>
+                        </g>
+                        <defs>
+                            <clipPath>
+                                <rect width="869" height="932" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+
+                    <svg width="869" height="932" viewBox="0 0 869 932" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="inner-svg" id="inner" (click)="envelopeClick()">
+                        <g id="inner-svg" clip-path="url(#clip0)">
+                            <g>
+                                <path d="M872.57 311L435.5 620.387L-1.57007 311L872.57 311Z" fill="#C4C4C4"
+                                    stroke="black" />
+                            </g>
+                        </g>
+                        <defs>
+                            <clipPath>
+                                <rect width="869" height="932" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+
+                    <svg width="869" height="932" viewBox="0 0 869 932" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="top-svg" id="top" (click)="envelopeClick()">
+                        <g id="top-svg" clip-path="url(#clip0)">
+                            <g>
+                                <path d="M-1.57011 310L435.5 0.61259L872.57 310L-1.57011 310Z" fill="#C4C4C4"
+                                    stroke="black" />
+                            </g>
+                        </g>
+                        <defs>
+                            <clipPath>
+                                <rect width="869" height="932" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="bottom-line">
+            <a class="single-data-container" href="tel:0151-70160587">
+                <img src="../../assets/img/phone-line.png">
+                <p class="c1">Phone:</p>
+                <p class="c2">0151-70160587</p>
+            </a>
+            <div class="single-data-container" style="cursor: context-menu;">
+                <img src="../../assets/img/maps-line.png">
+                <p class="c1">Adress: </p>
+                <p class="c2">Sternstraße 10, 01139, DE</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height: 50px; width: 100%; background-color: var(--bg-color-startpage);"></div>

@@ -1,37 +1,129 @@
-header{
+header {
     z-index: 2;
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
     top: 0;
-    font-size: 30;
+    bottom: calc(100vh - 50px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 80%);
 }
 
-.logo{
+.nav-bar-mobile {
+    z-index: 2;
+    position: unset;
+
+    @media (max-width: 900px) {
+        position: fixed;
+        right: -150px;
+        top: 50px;
+        opacity: 0;
+        transition: all 1000ms ease-in-out;
+    }
+}
+
+.nav-bar-unfocus-overlay{
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    // background-color: rgba(125, 64, 224, 0.226);
+}
+
+.show-nav-bar-mobile {
+    z-index: 2;
+    position: unset;
+
+    @media (max-width: 900px) {
+        position: fixed;
+        right: 0px;
+        top: 50px;
+        opacity: 1;
+    }
+}
+
+ul {
+    z-index: 2;
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    font-size: 25px;
+    cursor: pointer;    
+    padding-left: 0;
+
+    @media (max-width: 900px) {
+        flex-direction: column;
+        border-bottom-left-radius: 20px;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+}
+
+li {
+    @media (max-width: 900px) {
+        border-bottom: 1px solid var(--table);
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+}
+
+a {
+    color: white;
+    transition: all 225ms ease-in-out;
+
+    &:hover {
+        opacity: 80%;
+    }
+}
+
+.menu-logo {
+    z-index: 2;
+    display: none;
+    filter: invert(1);
+    height: 35px;
+    margin-right: 10px;
+    cursor: pointer;
+
+    @media (max-width: 900px) {
+        display: flex;
+    }
+}
+
+.logo {
+    margin-left: 10px;
     height: 40px;
-    width: 100px;    
+    width: 100px;
 }
 
-.navbar-collapse{
-    flex-grow: unset !important;
-}
+.nav-item-selected {
+    position: relative;
 
-button{
-    margin-right: 30px;
-}
-
-.navbar-nav{
-    li{
-        font-size: 25px;        
-        width: 150px;
-        margin-left: auto;
-        text-align: right;
-    }
-    &:last-child{
-        margin-right: 30px;
+    &::before {
+        position: absolute;
+        content: "";
+        top: 20%;
+        left: 0;
+        bottom: 20%;
+        right: calc(100% - 2px);
+        background-color: var(--primary-red) !important;
     }
 }
 
-.navbar-collapse.in {
-    display: block !important;
+.nav-item:hover {
+    position: relative;
+
+    &::before {
+        position: absolute;
+        content: "";
+        top: 20%;
+        left: 0;
+        bottom: 20%;
+        right: calc(100% - 2px);
+        background-color: grey;
+    }
 }
