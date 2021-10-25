@@ -1,3 +1,5 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 :root {
     --primary-red: #d85050;
     --table: #4a4a4a;
@@ -13,6 +15,8 @@ body{
     flex-direction: column;
     max-width: unset !important;
     scroll-behavior: smooth;
+
+    color: white
 }
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';

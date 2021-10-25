@@ -21,8 +21,12 @@ export class ContactFormComponent implements OnInit {
   }
   mailState: string = "default";
   sendMailState: boolean = false;
+  sendMailInProgress: boolean = false
+  public activeLink: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.activeLink = '/'; 
+   }
 
   ngOnInit(): void {
     this.showDefaultMail();
@@ -65,10 +69,11 @@ export class ContactFormComponent implements OnInit {
   }
 
   mail() {
-    let url = "http://klaus-werner.developerakademie.com/klauswerner/send_mail.php";
+    let url = "https://klaus-werner.developerakademie.com/klauswerner/send_mail.php";
     let data = this.getMailData();
 
     if (this.mailDataValid(data)) {
+      this.sendMailInProgress = true;
       this.sendMail(url, data);
       this.sendMailAnimation();
     }
@@ -109,6 +114,7 @@ export class ContactFormComponent implements OnInit {
     }, 8000);
     setTimeout(() => {
       this.mailState = "showSendMailState";
+      this.sendMailInProgress = false;
     }, 9000);
   }
 

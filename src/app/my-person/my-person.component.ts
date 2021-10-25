@@ -11,4 +11,12 @@ export class MyPersonComponent implements OnInit {
   ngOnInit(): void {
     
   }
+
+  scrollToContactForm(){
+    let elm = document.getElementById('contact-form');
+
+    if(elm){
+      elm.scrollIntoView({behavior: "smooth"});
+    }    
+  }
 }

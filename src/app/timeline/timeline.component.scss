@@ -5,6 +5,7 @@
     justify-content: center;
     color: whitesmoke;
     padding: 20px;
+    margin-bottom: 30px;
 
     @media (max-width: 1000px) {
         max-width: unset !important;
@@ -19,8 +20,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 30px;
 
-    @media (max-width: 500px) {
+    @media (max-width: 600px) {
         flex-direction: column;
         align-items: flex-start;
     }
@@ -29,7 +31,7 @@
 .git-container {
     display: flex;
     align-items: center;
-    border-radius: 15px;
+    border-radius: 8px;
     padding: 5px 10px;
     cursor: pointer;
     transition: all 300ms ease-in-out;
@@ -50,7 +52,7 @@
         background-color: rgba(255, 255, 255, 2%);
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 600px) {
         border-radius: 0;
         margin-bottom: 30px;
         margin-top: 0;
@@ -60,7 +62,7 @@
 .git-logo {
     height: 40px;
 
-    @media (max-width: 500px) {
+    @media (max-width: 600px) {
         height: 30px
     }
 }
@@ -72,8 +74,8 @@
     transform: translateX(-50%);
     white-space: nowrap;
     font-size: 15px;
-    opacity: 80%;
     transition: opacity 500ms ease-in-out;
+    font-family: cursive;
 }
 .hide-hover-info {
     opacity: 0;
@@ -95,7 +97,6 @@ app-timeline-small-box {
 }
 .main-container {
     display: flex;
-    margin-top: 40px;
     width: 100%;
     max-width: 1500px;
     position: relative;
@@ -274,6 +275,10 @@ app-timeline-small-box {
     padding: 15px;
     background-color: rgba(0, 0, 0, 20%);
     border: 3px solid white;
+
+    @media (max-width: 449px) {
+        width: 130%;
+    }
 }
 .middle-overlay {
     position: absolute;

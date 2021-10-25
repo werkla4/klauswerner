@@ -18,8 +18,9 @@ export class TimelineComponent implements OnInit {
   references: any[] = [];
   currentIndex: number = 0;
   lastClick: number = new Date().getTime();
-  play: boolean = true;
+  play: boolean = false;
   refAnimationId: any = -1;
+  animationTime: number = 2000;
 
   constructor() {
   }
@@ -27,10 +28,8 @@ export class TimelineComponent implements OnInit {
   ngOnInit(): void {
     this.loadReferences();
     this.setMobileTimelineProperty();
-    this.startReferenceAnimation();
+    // this.btnClickPlay();
   }
-
-
 
   mtExistAllElements() {
     for (let i = 0; i < this.references.length; i++) {
@@ -131,6 +130,11 @@ export class TimelineComponent implements OnInit {
   }
 
   clickOnReference(index: number) {
+    if(this.play){
+      console.log("STOP ANIMATION");
+      
+      this.btnClickPlay();
+    }
     this.currentIndex = index;
     this.updateSelectedReference();
   }
@@ -165,19 +169,23 @@ export class TimelineComponent implements OnInit {
     }
   }
 
+  openWebside(){
+    window.open(this.references[this.currentIndex].link); 
+  }
+
   startReferenceAnimation() {
 
     setTimeout(() => {
       this.setNextCurrentIndex();
       this.updateAllTimelines();
       this.updateLeftSideNr();
-    }, 1000);
+    }, 300);
 
     this.refAnimationId = setInterval(() => {
       this.setNextCurrentIndex();
       this.updateAllTimelines();
       this.updateLeftSideNr();
-    }, 4000);
+    }, this.animationTime);
   }
 
   stopReferenceAnimation() {
@@ -246,45 +254,45 @@ export class TimelineComponent implements OnInit {
   loadReferences() {
     this.addReference({
       title: "El Pollo Loco",
-      description: "",
+      description: "A 2 Level Jump Run and Throw Game. Defeat the end boss by collecting the Tabasco bottles and throwing it on him. Collect all coins and try to get into the top ten temporally.",
       codeStyle: "Javascript | Class-Structure",
       link: "http://klaus-werner.developerakademie.com/EL_POLLO_LOCO/index.html",
-      imgPath: "../../assets/img/previewElPolloLoco.png"
+      imgPath: "assets/img/previewElPolloLoco.png"
     });
     this.addReference({
-      title: "Quizz-App",
-      description: " ",
+      title: "Quiz-App",
+      description: "A simple quiz game. Choose a category and test your knowledge. In the end your score will be communicated.",
       codeStyle: "HTML | CSS | Javascript",
       link: "http://klaus-werner.developerakademie.com/QuizApp/indx.html",
-      imgPath: "../../assets/img/previewQuizzApp.png"
+      imgPath: "assets/img/previewQuizzApp.png"
     });
     this.addReference({
       title: "Ring Of Fire",
-      description: "",
+      description: "Multiplayer online game. Load your friends to an online card game, and play the well-known drinking game Ring of Fire.",
       codeStyle: "HTML | CSS | Javascript | Firebase",
       link: "http://klaus-werner.developerakademie.com/ringoffire/index.html",
-      imgPath: "../../assets/img/previewRingOfFire.png"
+      imgPath: "assets/img/previewRingOfFire.png"
     });
     this.addReference({
       title: "KanBan-Board",
-      description: "",
+      description: "Create new tasks, turn it active and move the current status of your tasks via drag and drop in the Kanban board. Way the task of someone, determine the urgency and category. And then let us do the tasks.",
       codeStyle: "HTML | CSS | Javascript",
-      link: "http://klaus-werner.developerakademie.com/KanBan_group69/index/index.html",
-      imgPath: "../../assets/img/previewKanBanBoard.png"
+      link: "http://klaus-werner.developerakademie.com/KanBan_group69/board/board.html",
+      imgPath: "assets/img/previewKanBanBoard.png"
     });
     this.addReference({
       title: "Little-Insta",
-      description: "",
+      description: "Create posts with pictures and text. Set them online and like or comment others. It is a search function and slideshow installed.",
       codeStyle: "HTML | CSS | Javascript",
       link: "http://klaus-werner.developerakademie.com/Little_Insta/index.html",
-      imgPath: "../../assets/img/previewInsta.png"
+      imgPath: "assets/img/previewInsta.png"
     });
     this.addReference({
       title: "Slack-Chat",
-      description: "",
+      description: "Chat Messenger. There are private and public chat rooms. Write your friends or mention them in the chat. Add your files (also by drag and drop) and share them.",
       codeStyle: "ANGULAR | Firebase | Javascript | HTML | SCSS",
-      link: " HERE IS THE VIDEO LINK ... ",
-      imgPath: "../../assets/img/previewChat.png"
+      link: "https://www.loom.com/share/2496792b69184bdf8a59fde3b50aff41",
+      imgPath: "assets/img/previewChat.png"
     });
 
   }

@@ -1,19 +1,15 @@
-<header>
-  <a routerLink="/">
+<header [class.bg-darkmode]="darkMode">
+  <div routerLink="/" style="z-index: 2;">
     <img *ngIf='darkMode' class="logo" src="assets/img/grey_logo.png">
     <img *ngIf='!darkMode' class="logo" src="assets/img/white_logo.png">
-  </a>
-  <img src="assets/img/menu-bar.png" class="menu-logo" (click)="clickMenuLogo()">
+  </div>
+  <img src="assets/img/menu-bar.png" class="menu-logo" (click)="clickMenuLogo()" [class.menu-logo-darkmode]="darkMode">
   <div class="nav-bar-mobile" [class.show-nav-bar-mobile]="showMobileMenu" id="navbar-items-container">
-    <ul class="nav-ul">
+    <ul class="nav-ul" [class.bg-darkmode]="darkMode">
       <li class="nav-item" *ngFor="let item of items; let i = index;" (click)="itemClick(i)" id="item{{ i }}" [class.nav-item-selected]="i == 0">
-        <a class="nav-link">{{ item.title }}</a>
+        <a class="nav-link" [class.font-color-darkmode]="darkMode">{{ item.title }}</a>
       </li>
-
-      <!-- <li class="nav-item">
-        <a class="nav-link" [class.active]="activeLink=='imprint'" routerLink="/imprint" (click)="activeLink='imprint'">Imprint</a>
-      </li> -->
     </ul>
   </div>
-  <div style="position: fixed;" [class.nav-bar-unfocus-overlay]="navbarFocused" (click)="navbarUnfocused()"></div>
+  <div class="unfocus-overlay" [class.nav-bar-unfocus-overlay]="navbarFocused" (click)="navbarUnfocused()"></div>
 </header>

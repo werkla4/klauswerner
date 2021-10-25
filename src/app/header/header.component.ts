@@ -16,49 +16,51 @@ export class HeaderComponent implements OnInit {
   showMobileMenu = false;
   navbarFocused = false;
   manuelScrolling = true;
+  currentWebside = "Home";
 
   items: any = [
-    { title: "Home", id: "slideshow"},
-    { title: "Me", id: "my-person"},
-    { title: "References", id: "references"},
-    { title: "Contact", id: "contact-form"}
+    { title: "Home", id: "slideshow" },
+    { title: "Me", id: "my-person" },
+    { title: "References", id: "references" },
+    { title: "Contact", id: "contact-form" },
+    { title: "Imprint", id: "imprint" }
   ];
 
-  constructor(public router: Router) { 
+  constructor(public router: Router) {
     this.darkMode = false;
-    this.activeLink = '/'; 
+    this.activeLink = '/';
   }
 
   ngOnInit(): void {
     this.addSelectedProperty(0);
   }
 
-  clickMenuLogo(){
+  clickMenuLogo() {
     this.showMobileMenu = !this.showMobileMenu;
 
-    if(this.showMobileMenu){
-      this.navbarFocused = true;      
+    if (this.showMobileMenu) {
+      this.navbarFocused = true;
     }
   }
 
-  scrolling(){
-    if(this.manuelScrolling){
-      this.updateSelectedMenuOnScroll(); 
-    }     
+  scrolling() {
+    if (this.manuelScrolling) {
+      this.updateSelectedMenuOnScroll();
+    }
   }
 
-  updateSelectedMenuOnScroll(){
+  updateSelectedMenuOnScroll() {
     let selectIndx = -1;
 
-    if(this.slideshowFullInWindow()){
+    if (this.slideshowFullInWindow()) {
       selectIndx = 0;
     }
-    for(let i = 1; i < this.items.length; i++){
-      if(this.elementFullInWindow(this.items[i].id)){
+    for (let i = 1; i < this.items.length; i++) {
+      if (this.elementFullInWindow(this.items[i].id)) {
         selectIndx = i;
       }
     }
-    if(selectIndx > -1){
+    if (selectIndx > -1) {
       this.updateSelectProperty(selectIndx);
     }
   }
@@ -69,8 +71,8 @@ export class HeaderComponent implements OnInit {
       const elmTop = window.innerHeight * -1;
       const documentY = elm.getBoundingClientRect().y;
 
-      if (documentY > elmTop && documentY < 0) {        
-        return true;      
+      if (documentY > elmTop && documentY < 0) {
+        return true;
       }
     }
     return false;
@@ -84,54 +86,83 @@ export class HeaderComponent implements OnInit {
       const inWindow = windowHeight - elm.clientHeight;
 
       if (documentY < inWindow && documentY > 0) {
-        return true;      
+        return true;
       }
     }
     return false;
   }
 
-  scrollTo(index: number){
-    let elm = document.getElementById(this.items[index].id);
+  scrollTo(index: number) {
+    let delay = 0;
 
-    if(elm){
-      elm.scrollIntoView({behavior: "smooth"});
-    }    
+    if (this.currentWebside == "Imprint") {
+      delay = 500;
+    }
+
+    setTimeout(() => {
+      let elm = document.getElementById(this.items[index].id);
+
+      if (elm) {
+        elm.scrollIntoView({ behavior: "smooth" });
+      }
+    }, delay);
   }
 
-  hideSelectedPropertyOfAllItems(){
-    for(let i = 0; i < this.items.length; i++){
-      let elm = document.getElementById(`item${i}`)
-
-      if(elm){
+  hideSelectedPropertyOfAllItems() {
+    for (let i = 0; i < this.items.length; i++) {
+      let elm = document.getElementById(`item${i}`);
+      if (elm) {
         elm.classList.remove('nav-item-selected');
       }
     }
   }
 
-  navbarUnfocused(){
+  navbarUnfocused() {
     this.showMobileMenu = false;
     this.navbarFocused = false;
   }
 
-  updateSelectProperty(index: number){
+  updateSelectProperty(index: number) {
     this.hideSelectedPropertyOfAllItems();
     this.addSelectedProperty(index);
   }
 
-  itemClick(index: number){
-    this.updateSelectProperty(index);
-    this.scrollTo(index);
-    this.navbarFocused = true;
-    this.manuelScrolling = false;
-    setTimeout(()=>{
-      this.manuelScrolling = true;
-    }, 800);
+  goToImprintWebside() {
+    this.router.navigate(['/imprint']);
   }
 
-  addSelectedProperty(index: number){
+  goToStartWebside() {
+    this.router.navigate(['/']);
+  }
+
+  itemClick(index: number) {
+    if (this.items[index].title == "Imprint") {
+      this.goToImprintWebside();
+    }
+    else {
+      this.goToStartWebside();
+      this.scrollTo(index);
+      setTimeout(() => {
+        this.manuelScrolling = true;
+      }, 800);
+    }
+    this.updateSelectProperty(index);
+    this.navbarFocused = true;
+    this.manuelScrolling = false;
+  }
+
+  addSelectedProperty(index: number) {
     let elm = document.getElementById(`item${index}`);
 
-    if(elm){
+    if (elm) {
+      elm.classList.add('nav-item-selected');
+    }
+  }
+
+  addSelectedPropertyWithId(id: string) {
+    let elm = document.getElementById(id);
+
+    if (elm) {
       elm.classList.add('nav-item-selected');
     }
   }
